@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            你好
+        </title>
+    </head>
+
+
+<body>
+
+    <div id="app">
+        <span v-if="type === 'username'" key="k-username">
+            <label >用户账号：</label>
+            <input type="text" placeholder="用户账号">
+        </span>
+        <span v-else key="k-email">
+            <label>邮箱地址：</label>
+            <input type="text" placeholder="邮箱地址">
+        </span>
+ 
+        <button @click="handleToggle">切换类型</button>
+    </div>
+
+    <div id="app1">
+        <span v-if="isShow">我要不要显示呢</span>
+        <button @click="handle">点击</button>
+    </div>
+
+    <div id="app2">
+        <h3 v-for="item in items">{{ item }}</h3>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                type: 'username'
+            },
+            methods: {
+                handleToggle(){
+                    this.type = this.type === 'email' ? 'username' : 'email'
+                }
+            }
+        });
+
+        const app1 = new Vue({
+            el: "#app1",
+            data: {
+                isShow: true
+            },
+            methods: {
+                handle(){
+                    this.isShow = !this.isShow
+                }
+            }
+        });
+
+        let app2 = new Vue({
+            el: "#app2",
+            data: {
+                items: ["1", 2]
+            }
+        })
+
+    </script>
+</body>
+
+</html>
